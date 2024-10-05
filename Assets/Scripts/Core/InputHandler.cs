@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class InputHandler : MonoBehaviour
 {
-    [SerializeField] private Vector3 _offset;
-    [SerializeField] private Vector3 _rotation;
     [SerializeField] private float _movementSpeed;
 
     [SerializeField] private LayerMask _layerMask;

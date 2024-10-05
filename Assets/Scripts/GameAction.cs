@@ -10,4 +10,6 @@ public class GameAction
     public void SendPlagUp() => OnPlagUp?.Invoke();
 
     public void SendRestart() => OnRestart?.Invoke();
+
+    public void SendWin() => UnityEngine.Debug.Log("Win");
 }

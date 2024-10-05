@@ -9,6 +9,8 @@ public class Plug : Base
     [SerializeField] private Vector3 _rotation;
     [SerializeField] private Vector3 _connectedRotation;
 
+    public Base Target { get=> _target; set => _target = value; }
+
     public Vector3 Offset => _offset;
     public Vector3 Rotation => _rotation;
 

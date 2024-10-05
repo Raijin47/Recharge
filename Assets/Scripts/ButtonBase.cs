@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class ButtonBase : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
 {
@@ -14,6 +13,7 @@ public class ButtonBase : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     [SerializeField] private bool _interactable = true;
 
     public UnityEvent OnClick;
+
     public bool Interactable
     { 
         get => _interactable; 

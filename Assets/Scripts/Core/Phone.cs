@@ -5,25 +5,31 @@ public class Phone : Base
 {
     [SerializeField] private Animator _animator;
 
+    public bool IsComplated { get; set; }
     private float _charge;
-    private Coroutine _chargeProcessCoroutine;
+    private Coroutine _updateProcessCoroutine;
 
     public override bool IsCharging 
     {
         get => _isCharging;
         set 
         {
-            if(value)
-            {
-                ReleaseCoroutine();
-                _chargeProcessCoroutine = StartCoroutine(ChargeProcessCoroutine());
-            }
-            else
-            {
-                ReleaseCoroutine();
-                _chargeProcessCoroutine = StartCoroutine(DischargeProcessCoroutine());
-            }
+            ReleaseCoroutine();
+            if (value) _updateProcessCoroutine = StartCoroutine(ChargeProcessCoroutine());
+            else _updateProcessCoroutine = StartCoroutine(DischargeProcessCoroutine());
         }      
+    }
+
+    private void OnEnable()
+    {
+        Game.Task.AddDevice(this);
+        IsComplated = false;
+    }
+
+    private void OnDisable()
+    {
+        Game.Task.RemoveDevice(this);
+        IsComplated = false;
     }
 
     private IEnumerator ChargeProcessCoroutine()
@@ -35,6 +41,9 @@ public class Phone : Base
             _animator.SetFloat("Full", _charge);
             yield return null;
         }
+
+        IsComplated = true;
+        if (Game.Task.Check()) Game.Action.SendWin(); 
     }
 
     private IEnumerator DischargeProcessCoroutine()
@@ -45,15 +54,16 @@ public class Phone : Base
             _animator.SetFloat("Full", _charge);
             yield return null;
         }
+        IsComplated = false;
         _animator.Play("Empty");
     }
 
     private void ReleaseCoroutine()
     {
-        if(_chargeProcessCoroutine != null)
+        if(_updateProcessCoroutine != null)
         {
-            StopCoroutine(_chargeProcessCoroutine);
-            _chargeProcessCoroutine = null;
+            StopCoroutine(_updateProcessCoroutine);
+            _updateProcessCoroutine = null;
         }
     }
 }
