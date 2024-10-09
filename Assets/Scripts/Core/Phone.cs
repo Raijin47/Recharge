@@ -42,6 +42,7 @@ public class Phone : Base
             yield return null;
         }
 
+        Game.Audio.OnPhoneIsCharged();
         IsComplated = true;
         if (Game.Task.Check()) Game.Action.SendWin(); 
     }

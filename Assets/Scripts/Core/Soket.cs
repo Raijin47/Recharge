@@ -19,6 +19,7 @@ public class Soket : Base
 
     public void Connect(Plug plug)
     {
+        Game.Audio.OnPlugInSocket();
         if (_adapter.Plug != plug)
         {
             Plug = plug;
