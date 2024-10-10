@@ -167,7 +167,7 @@ public class Shop : MonoBehaviour
 
     private IEnumerator RandomizeBackgroundCoroutine()
     {
-        _backgroundFrame[YandexGame.savesData.Pin].color = _disableFrameColor;
+        _backgroundFrame[YandexGame.savesData.Background].color = _disableFrameColor;
 
         for (int i = 0; i < _backgroundFrame.Length; i++)
             if (!YandexGame.savesData.IsBackgroundPurchased[i])
