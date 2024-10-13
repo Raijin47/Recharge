@@ -4,6 +4,7 @@ public class Adapter : Base
 {
     [SerializeField] private Soket[] _sokets;
     [SerializeField] private bool _isActive;
+
     [SerializeField] private Plug _plug;
 
     public Plug Plug { get => _plug; }

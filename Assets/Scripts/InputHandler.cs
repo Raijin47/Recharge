@@ -30,14 +30,14 @@ public class InputHandler : MonoBehaviour
         ReleaseCoroutine();
         _dragProcessCoroutine = StartCoroutine(DragProcessCoroutine());
     }
-
+    
     private IEnumerator DragProcessCoroutine()
     {
         while (true)
         {
             if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, _rayDistance, _layerMask))
             {
-                _plug.Rigidbody.Move((hit.point + _plug.Offset), Quaternion.Euler(_plug.Rotation));
+                _plug.Rigidbody.Move(hit.point + _plug.Offset, Quaternion.Euler(_plug.Rotation));
             }
             yield return null;
         }

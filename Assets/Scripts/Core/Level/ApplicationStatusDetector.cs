@@ -4,15 +4,15 @@ using System.Collections.Generic;
 [Serializable]
 public class ApplicationStatusDetector
 {
-    private readonly List<Phone> ActiveDevice = new();
+    private readonly List<Device> ActiveDevice = new();
 
-    public void AddDevice(Phone device) => ActiveDevice.Add(device);
+    public void AddDevice(Device device) => ActiveDevice.Add(device);
 
-    public void RemoveDevice(Phone device) => ActiveDevice.Remove(device);
+    public void RemoveDevice(Device device) => ActiveDevice.Remove(device);
 
     public bool Check()
     {
-        foreach(Phone device in ActiveDevice)
+        foreach(Device device in ActiveDevice)
         {
             if (!device.IsComplated) return false;
         }

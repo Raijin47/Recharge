@@ -73,19 +73,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e9017e31c0505e43b4b363f7e3f017c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pin: {fileID: 2989754648149981501}
   _target: {fileID: 0}
+  _soket: {fileID: 0}
   _soketLayer:
     serializedVersion: 2
     m_Bits: 128
   _offsetPin: {x: 0, y: 0, z: 1.1}
   _sizePin: {x: 1, y: 1, z: 3.5}
   _castRadius: 1
-  _offset: {x: 0, y: 0, z: 0}
+  _offset: {x: 0, y: 2, z: 0}
   _rotation: {x: 0, y: 0, z: 0}
   _connectedRotation: {x: 0, y: 0, z: 0}
-  _soket: {fileID: 0}
-  IsArea: 0
 --- !u!1 &1339320472986656
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,7 +369,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1245169905094548364}
-  - component: {fileID: 2989754648149981501}
   m_Layer: 6
   m_Name: Pin
   m_TagString: Untagged
@@ -395,18 +392,6 @@ Transform:
   - {fileID: 8386543066898461728}
   m_Father: {fileID: 4590886834788454}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &2989754648149981501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5282956697901612689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e05c4157d950193409dbfeca01dc39f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8388169816298536605
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,13 +419,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8388169816298536605}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1245169905094548364}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &8365642583866537594
 MeshFilter:
   m_ObjectHideFlags: 0

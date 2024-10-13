@@ -1,35 +1,17 @@
 using System.Collections;
 using UnityEngine;
 
-public class Phone : Base
+public class Phone : Device
 {
-    [SerializeField] private Animator _animator;
-
-    public bool IsComplated { get; set; }
-    private float _charge;
     private Coroutine _updateProcessCoroutine;
 
-    public override bool IsCharging 
-    {
-        get => _isCharging;
-        set 
-        {
-            ReleaseCoroutine();
-            if (value) _updateProcessCoroutine = StartCoroutine(ChargeProcessCoroutine());
-            else _updateProcessCoroutine = StartCoroutine(DischargeProcessCoroutine());
-        }      
-    }
+    private float _charge;
 
-    private void OnEnable()
+    protected override void Charge(bool value)
     {
-        Game.Task.AddDevice(this);
-        IsComplated = false;
-    }
-
-    private void OnDisable()
-    {
-        Game.Task.RemoveDevice(this);
-        IsComplated = false;
+        ReleaseCoroutine();
+        if (value) _updateProcessCoroutine = StartCoroutine(ChargeProcessCoroutine());
+        else _updateProcessCoroutine = StartCoroutine(DischargeProcessCoroutine());
     }
 
     private IEnumerator ChargeProcessCoroutine()
@@ -44,7 +26,6 @@ public class Phone : Base
 
         Game.Audio.OnPhoneIsCharged();
         IsComplated = true;
-        if (Game.Task.Check()) Game.Action.SendWin(); 
     }
 
     private IEnumerator DischargeProcessCoroutine()

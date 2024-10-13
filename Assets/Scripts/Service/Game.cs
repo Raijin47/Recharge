@@ -3,8 +3,9 @@ using UnityEngine;
 public class Game : MonoBehaviour
 {
     [SerializeField] private PinData _pinData;
-    [SerializeField] private GameAudio _audio;
     [SerializeField] private Wallet _wallet;
+    [SerializeField] private GameAudio _audio;
+    [SerializeField] private GameParticle _particle;
 
     [Space(10)]
     [SerializeField] private LevelHandler _level;
@@ -12,13 +13,14 @@ public class Game : MonoBehaviour
 
     private readonly GameAction _action = new();
     private readonly ApplicationStatusDetector _task = new();
-
+    
     public static Wallet Wallet;
     public static PinData Pin;
     public static GameAction Action;
     public static ApplicationStatusDetector Task;
     public static LevelHandler Level;
     public static GameAudio Audio;
+    public static GameParticle Particle;
 
     private void Awake()
     {
@@ -28,6 +30,7 @@ public class Game : MonoBehaviour
         Wallet = _wallet;
         Level = _level;
         Audio = _audio;
+        Particle = _particle;
     }
 
     private void Start()

@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Plug : Base
 {
-    [SerializeField] private Pin _pin;
     [SerializeField] private Base _target;
+    [SerializeField] private Soket _soket;
     [SerializeField] private LayerMask _soketLayer;
 
     [Space(10)]
@@ -18,12 +18,9 @@ public class Plug : Base
 
     private Collider[] _result;
     public Base Target { get=> _target; set => _target = value; }
-
     public Vector3 Offset => _offset;
     public Vector3 Rotation => _rotation;
-
     public Rigidbody Rigidbody { get; private set; }
-    [SerializeField]private Soket _soket;
 
     public override bool IsCharging 
     { 
@@ -115,7 +112,6 @@ public class Plug : Base
 
         return true;
     }
-
 
     private void OnDrawGizmos()
     {

@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5122574130510978886}
-  - component: {fileID: 1907697008485411447}
   - component: {fileID: 6407831319208326442}
   m_Layer: 6
   m_Name: Pin
@@ -34,18 +33,6 @@ Transform:
   - {fileID: 3449087181169856157}
   m_Father: {fileID: 3441506679709807212}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1907697008485411447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1453323433579681345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e05c4157d950193409dbfeca01dc39f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &6407831319208326442
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -214,7 +201,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: addd71e890cfa064cbb3ef25fb8b8c4f, type: 2}
+  - {fileID: 2100000, guid: 4571fe14c79710c46a0f5c71db0b1dde, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -385,8 +372,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e9017e31c0505e43b4b363f7e3f017c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pin: {fileID: 0}
   _target: {fileID: 0}
+  _soket: {fileID: 0}
   _soketLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -396,8 +383,6 @@ MonoBehaviour:
   _offset: {x: 0, y: 0, z: 0}
   _rotation: {x: 0, y: 0, z: 0}
   _connectedRotation: {x: 0, y: 0, z: 0}
-  _soket: {fileID: 0}
-  IsArea: 0
 --- !u!1 &3447354404072270598
 GameObject:
   m_ObjectHideFlags: 0
