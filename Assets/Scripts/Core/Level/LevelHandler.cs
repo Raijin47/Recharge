@@ -22,6 +22,7 @@ public class LevelHandler : MonoBehaviour
     private Coroutine _movementProcessCoroutine;
     private Vector3 _currentLevelPosition = new (0, 0, -400);
 
+    private bool _isRestart = false;
     private bool _hasNewLevel = false;
     private int Level
     {
@@ -42,13 +43,13 @@ public class LevelHandler : MonoBehaviour
             if (stage > 3)
             {
                 stage = 0;
+                YandexGame.savesData.Stage = stage;
                 Level++;
                 _hasNewLevel = true;
-                YandexGame.savesData.Stage = stage;
-                YandexGame.SaveProgress();
             }
             else 
             {
+                Game.Particle.OnWinStage();
                 YandexGame.savesData.Stage = stage;
                 YandexGame.SaveProgress();
                 MoveNextStage();
@@ -60,7 +61,8 @@ public class LevelHandler : MonoBehaviour
     public void Init() 
     {
         _movementProcessCoroutine = StartCoroutine(LoadingStartingScene());
-        Game.Action.OnWin += () => { Stage++; }; 
+        Game.Action.OnWin += () => { Stage++; };
+        Game.Action.OnRestart += RestartGame;
     } 
 
     private IEnumerator LoadingStartingScene()
@@ -72,10 +74,35 @@ public class LevelHandler : MonoBehaviour
         Destroy(_loadingPage);
     }
 
+    private void RestartGame()
+    {
+        ReleaseCoroutine();
+        _movementProcessCoroutine = StartCoroutine(RestartGameCoroutine());
+    }
+
+    private IEnumerator RestartGameCoroutine()
+    {
+        _isRestart = true;
+        int current = LevelList[0].ID;
+        yield return SceneManager.UnloadSceneAsync(current);
+        yield return SceneManager.LoadSceneAsync(current, LoadSceneMode.Additive);
+        LevelList.RemoveAt(0);
+    }
+
     public void AddLevel(LevelManager level)
     {
-        LevelList.Add(level);
-        level.SetPosition(GetLevelPosition());
+        if (_isRestart)
+        {
+            LevelList.Insert(0, level);
+            level.Activate(Stage);
+            level.SetPosition(_currentLevelPosition - new Vector3(0, 0, 400));
+            _isRestart = false;
+        }
+        else
+        {
+            LevelList.Add(level);
+            level.SetPosition(GetLevelPosition());
+        }
     }
 
     public void MoveNextStage()
@@ -84,8 +111,12 @@ public class LevelHandler : MonoBehaviour
         _movementProcessCoroutine = StartCoroutine(MovementProcess());
     }
 
+    private readonly WaitForSeconds Dalay = new(1f);
+
     private IEnumerator MovementProcess()
     {
+        yield return Dalay;
+
         if (_hasNewLevel) LevelList[1].Activate(0);
         else LevelList[0].Activate(Stage);
 

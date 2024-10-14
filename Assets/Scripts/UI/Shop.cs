@@ -9,7 +9,7 @@ public class Shop : MonoBehaviour
     [SerializeField] private GameObject[] _panels;
     [SerializeField] private Image[] _buttonImages;
     [SerializeField] private Animator _animator;
-    [SerializeField] private Material _material;
+    [SerializeField] private Material[] _materials;
     [SerializeField] private GameObject _buttonBuyPin;
     [SerializeField] private GameObject _buttonBuyBackground;
 
@@ -55,7 +55,7 @@ public class Shop : MonoBehaviour
 
         _buttonBuyPin.SetActive(IsBuyPin());
         _buttonBuyBackground.SetActive(IsBuyBackground());
-        _material.mainTexture = _enableBackground[YandexGame.savesData.Background].mainTexture;
+        SetMaterial(_enableBackground[YandexGame.savesData.Background].mainTexture);
     }
 
     private void OnEnable() => EnterPanel(0);
@@ -103,7 +103,7 @@ public class Shop : MonoBehaviour
 
         _backgroundFrame[YandexGame.savesData.Background].color = _disableFrameColor;
         _backgroundFrame[id].color = _enableFrameColor;
-        _material.mainTexture = _enableBackground[id].mainTexture;
+        SetMaterial(_enableBackground[id].mainTexture);
 
         YandexGame.savesData.Background = id;
         YandexGame.SaveProgress();
@@ -128,6 +128,12 @@ public class Shop : MonoBehaviour
             StopCoroutine(_coroutine);
             _coroutine = null;
         }
+    }
+
+    private void SetMaterial(Texture texture)
+    {
+        foreach(Material material in _materials)       
+            material.mainTexture = texture;       
     }
 
     private IEnumerator RandomizePinCoroutine()

@@ -1,9 +1,9 @@
-using System.Collections;
 using UnityEngine;
 
 public class InputHandler : MonoBehaviour
 {
     [SerializeField] private float _movementSpeed;
+    [SerializeField] private float _offsetY = 2.5f;
 
     [SerializeField] private LayerMask _layerMask;
 
@@ -11,7 +11,6 @@ public class InputHandler : MonoBehaviour
 
     private Plug _plug;
     private Camera _camera;
-    private Coroutine _dragProcessCoroutine;
 
     private void Awake()
     {
@@ -27,34 +26,32 @@ public class InputHandler : MonoBehaviour
     private void StartDrag(Plug plug)
     {
         _plug = plug;
-        ReleaseCoroutine();
-        _dragProcessCoroutine = StartCoroutine(DragProcessCoroutine());
+
+        _plug.transform.rotation = Quaternion.Euler(_plug.Rotation);
+        _plug.transform.position = new Vector3(_plug.transform.position.x, _offsetY, _plug.transform.position.z);
+
+        _plug.Rigidbody.constraints = RigidbodyConstraints.FreezePositionY;
+        _plug.Rigidbody.freezeRotation = true;
     }
-    
-    private IEnumerator DragProcessCoroutine()
+
+    private void FixedUpdate()
     {
-        while (true)
+        if(_plug != null)
         {
             if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, _rayDistance, _layerMask))
             {
-                _plug.Rigidbody.Move(hit.point + _plug.Offset, Quaternion.Euler(_plug.Rotation));
+                Vector3 direction = hit.point + _plug.Offset - _plug.transform.position;
+                float multiply = Vector3.Distance(hit.point + _plug.Offset, _plug.transform.position);
+
+                _plug.Rigidbody.velocity = multiply * _movementSpeed * Time.fixedDeltaTime * direction;
             }
-            yield return null;
         }
     }
 
     private void EndDrag()
     {
-        ReleaseCoroutine();
-
+        _plug.Rigidbody.constraints = RigidbodyConstraints.None;
         _plug.Connect();
         _plug = null;
-    }
-
-    private void ReleaseCoroutine()
-    {
-        if (_dragProcessCoroutine == null) return;
-        StopCoroutine(_dragProcessCoroutine);
-        _dragProcessCoroutine = null;
     }
 }

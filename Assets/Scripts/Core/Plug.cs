@@ -39,7 +39,6 @@ public class Plug : Base
 
     private void OnMouseDown() 
     {
-        Game.Action.SendPlagDown(this);
         IsCharging = false;
         Rigidbody.isKinematic = false;
         if(_soket != null)
@@ -58,6 +57,7 @@ public class Plug : Base
             _soket.Disconnect();
             _soket = null;
         }
+        Game.Action.SendPlagDown(this);
     } 
 
     private void OnMouseUp() => Game.Action.SendPlagUp();
