@@ -40,10 +40,12 @@ public class InputHandler : MonoBehaviour
         {
             if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, _rayDistance, _layerMask))
             {
-                Vector3 direction = hit.point + _plug.Offset - _plug.transform.position;
-                float multiply = Vector3.Distance(hit.point + _plug.Offset, _plug.transform.position);
+                Vector3 point = Vector3.Lerp(_plug.TAnchor.position, hit.point, _plug.Distance / Vector3.Distance(_plug.TAnchor.position, hit.point));
+                Vector3 direction = point + _plug.Offset - _plug.transform.position;
 
-                _plug.Rigidbody.velocity = multiply * _movementSpeed * Time.fixedDeltaTime * direction;
+                float multipy = Vector3.Distance(point + _plug.Offset, _plug.transform.position);
+
+                _plug.Rigidbody.velocity = multipy * _movementSpeed * Time.fixedDeltaTime * direction;
             }
         }
     }

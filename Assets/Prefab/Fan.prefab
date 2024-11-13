@@ -213,10 +213,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65ea030e660daed46afe5f9638d7a17d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _anchror: {fileID: 4157651488157836}
   _plug: {fileID: 0}
   _fan: {fileID: 4615943241346537}
   _papers: []
-  _force: 0.1
+  _force: 0.2
   _speed: 1000
   _dalay: 0.5
 --- !u!1 &1710781027421016

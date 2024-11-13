@@ -19,7 +19,7 @@ public class Phone : Device
         _animator.Play("Full");
         while(_charge <= 1)
         {
-            _charge += Time.deltaTime;
+            _charge += Time.deltaTime * 0.4f;
             _animator.SetFloat("Full", _charge);
             yield return null;
         }

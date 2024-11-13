@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 325b217b839086b4ca705834516bc0d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Init: 0
   radius: 0.2
   radialVertices: 6
   isLoop: 0
@@ -53,12 +54,12 @@ MonoBehaviour:
   customMesh: {fileID: 0}
   customMeshRotation: 25
   spawnPoints:
-  - x: 6.521712
-    y: 0.3564396
-    z: -0.67767334
-  - x: 1.4941406
-    y: 0.98529434
-    z: -4.918518
+  - x: 0
+    y: 0
+    z: 0
+  - x: 0
+    y: 0
+    z: 0
   interpolation: 0
   simulation:
     enabled: 1
@@ -103,6 +104,7 @@ MonoBehaviour:
     stiffness: 0.1
     damping: 0.1
   transformSettings:
+    anchor: {fileID: 0}
     transform: {fileID: 0}
   localConnectionPoint:
     x: 0
@@ -128,6 +130,7 @@ MonoBehaviour:
     stiffness: 0.1
     damping: 0.1
   transformSettings:
+    anchor: {fileID: 0}
     transform: {fileID: 0}
   localConnectionPoint:
     x: 0

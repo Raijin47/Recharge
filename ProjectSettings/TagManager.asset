@@ -10,6 +10,11 @@ TagManager:
   - Plug
   - Paper
   - Wall
+  - MovementObj
+  - Pusher
+  - SolarPanel
+  - Miror
+  - Coin
   layers:
   - Default
   - TransparentFX
@@ -20,13 +25,13 @@ TagManager:
   - Plug
   - Soket
   - Paper
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Car
+  - Button
+  - Block
+  - SolarPanel
+  - Mirror
+  - PoolWall
+  - Coin
   - 
   - 
   - 

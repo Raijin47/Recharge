@@ -53,7 +53,7 @@ namespace RopeToolkit
         };
 
         public TransformSettings transformSettings = new TransformSettings()
-        {};
+        { };
 
         [Tooltip("The point in local object space to connect to")]
         public float3 localConnectionPoint;
@@ -68,16 +68,19 @@ namespace RopeToolkit
                 switch (type)
                 {
                     case RopeConnectionType.PinRopeToTransform:
-                    case RopeConnectionType.PinTransformToRope: {
-                        return transformSettings.transform;
-                    }
+                    case RopeConnectionType.PinTransformToRope:
+                        {
+                            return transformSettings.transform;
+                        }
                     case RopeConnectionType.PullRigidbodyToRope:
-                    case RopeConnectionType.TwoWayCouplingBetweenRigidbodyAndRope: {
-                        return rigidbodySettings.body;
-                    }
-                    default: {
-                        return null;
-                    }
+                    case RopeConnectionType.TwoWayCouplingBetweenRigidbodyAndRope:
+                        {
+                            return rigidbodySettings.body;
+                        }
+                    default:
+                        {
+                            return null;
+                        }
                 }
             }
         }
@@ -153,46 +156,46 @@ namespace RopeToolkit
             {
                 return;
             }
-            
+
             switch (type)
             {
                 case RopeConnectionType.PinRopeToTransform:
-                {
-                    rope.SetMassMultiplierAt(particleIndex, 0.0f);
-                    rope.SetPositionAt(particleIndex, connectionPoint);
-                    break;
-                }
-                case RopeConnectionType.PinTransformToRope:
-                {
-                    var target = rope.GetPositionAt(particleIndex, true);
-                    var offset = (float3)(transformSettings.transform.TransformPoint(localConnectionPoint) - transformSettings.transform.position);
-                    transformSettings.transform.position = target - offset;
-                    break;
-                }
-                case RopeConnectionType.PullRigidbodyToRope:
-                {
-                    var target = rope.GetPositionAt(particleIndex, false);
-                    var current = connectionPoint;
-                    var delta = target - current;
-                    var dist = math.length(delta);
-                    if (dist > 0.0f)
                     {
-                        var normal = delta / dist;
-                        var correctionVelocity = dist * rigidbodySettings.stiffness / Time.fixedDeltaTime;
-                        rigidbodySettings.body.SetPointVelocityNow(current, normal, correctionVelocity, rigidbodySettings.damping);
+                        rope.SetMassMultiplierAt(particleIndex, 0.0f);
+                        rope.SetPositionAt(particleIndex, connectionPoint);
+                        break;
                     }
-                    break;
-                }
+                case RopeConnectionType.PinTransformToRope:
+                    {
+                        var target = rope.GetPositionAt(particleIndex, true);
+                        var offset = (float3)(transformSettings.transform.TransformPoint(localConnectionPoint) - transformSettings.transform.position);
+                        transformSettings.transform.position = target - offset;
+                        break;
+                    }
+                case RopeConnectionType.PullRigidbodyToRope:
+                    {
+                        var target = rope.GetPositionAt(particleIndex, false);
+                        var current = connectionPoint;
+                        var delta = target - current;
+                        var dist = math.length(delta);
+                        if (dist > 0.0f)
+                        {
+                            var normal = delta / dist;
+                            var correctionVelocity = dist * rigidbodySettings.stiffness / Time.fixedDeltaTime;
+                            rigidbodySettings.body.SetPointVelocityNow(current, normal, correctionVelocity, rigidbodySettings.damping);
+                        }
+                        break;
+                    }
                 case RopeConnectionType.TwoWayCouplingBetweenRigidbodyAndRope:
-                {
-                    rope.RegisterRigidbodyConnection(
-                        particleIndex,
-                        rigidbodySettings.body,
-                        rigidbodySettings.damping,
-                        connectionPoint,
-                        rigidbodySettings.stiffness);
-                    break;
-                }
+                    {
+                        rope.RegisterRigidbodyConnection(
+                            particleIndex,
+                            rigidbodySettings.body,
+                            rigidbodySettings.damping,
+                            connectionPoint,
+                            rigidbodySettings.stiffness);
+                        break;
+                    }
             }
         }
 

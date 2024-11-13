@@ -73,11 +73,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e9017e31c0505e43b4b363f7e3f017c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _anchror: {fileID: 4081577735872854}
+  _distance: 0
   _target: {fileID: 0}
   _soket: {fileID: 0}
   _soketLayer:
     serializedVersion: 2
     m_Bits: 128
+  _blockPoints: []
   _offsetPin: {x: 0, y: 0, z: 1.1}
   _sizePin: {x: 1, y: 1, z: 3.5}
   _castRadius: 1

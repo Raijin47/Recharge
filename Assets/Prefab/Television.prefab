@@ -824,7 +824,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2f0001f4afd5648970400f2a6d1e19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 0}
+  _anchror: {fileID: 3924113567563648041}
+  _animator: {fileID: 95817955172752100}
 --- !u!1 &1956964890015084
 GameObject:
   m_ObjectHideFlags: 0

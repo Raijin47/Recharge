@@ -372,17 +372,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e9017e31c0505e43b4b363f7e3f017c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _anchror: {fileID: 3449008102994434146}
+  _distance: 0
   _target: {fileID: 0}
   _soket: {fileID: 0}
   _soketLayer:
     serializedVersion: 2
     m_Bits: 128
-  _offsetPin: {x: 0, y: 0, z: 0}
-  _sizePin: {x: 1, y: 1, z: 1}
+  _blockPoints:
+  - {x: 0, y: 0, z: 0}
   _castRadius: 1
-  _offset: {x: 0, y: 0, z: 0}
-  _rotation: {x: 0, y: 0, z: 0}
-  _connectedRotation: {x: 0, y: 0, z: 0}
+  _offset: {x: 0, y: 2, z: 1}
+  _rotation: {x: -20, y: 0, z: 0}
+  _connectedRotation: {x: -90, y: 0, z: 0}
 --- !u!1 &3447354404072270598
 GameObject:
   m_ObjectHideFlags: 0

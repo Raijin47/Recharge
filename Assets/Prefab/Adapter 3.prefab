@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 843c6df3b8e3ccd448081552b9c3a753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _anchror: {fileID: 363594575374218297}
   _sokets:
   - {fileID: 4120662619551986190}
   - {fileID: 4125169209734177332}
@@ -218,6 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c916e32b038ee6d478bdf085844bcf3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _anchror: {fileID: 0}
   _adapter: {fileID: 4289578076891266595}
   IsUse: 1
   Plug: {fileID: 0}
@@ -415,6 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c916e32b038ee6d478bdf085844bcf3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _anchror: {fileID: 0}
   _adapter: {fileID: 4289578076891266595}
   IsUse: 1
   Plug: {fileID: 0}
@@ -485,6 +488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c916e32b038ee6d478bdf085844bcf3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _anchror: {fileID: 0}
   _adapter: {fileID: 4289578076891266595}
   IsUse: 1
   Plug: {fileID: 0}
@@ -589,7 +593,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 8.531653, y: 1.6938521, z: 2.258127}
   m_Center: {x: 0, y: -0.84856063, z: 0}

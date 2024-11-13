@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 843c6df3b8e3ccd448081552b9c3a753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _anchror: {fileID: 2571897601804923472}
   _sokets:
   - {fileID: 7944687913844428092}
   _isActive: 0
@@ -251,6 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c916e32b038ee6d478bdf085844bcf3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _anchror: {fileID: 0}
   _adapter: {fileID: 6419975533829574639}
   IsUse: 0
   Plug: {fileID: 0}
